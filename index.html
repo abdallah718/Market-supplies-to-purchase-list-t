@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>قائمة مشتريات السوبر ماركت</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+    #inputContainer {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 60%;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-right: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #28a745;
+      color: white;
+      cursor: pointer;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+      max-width: 400px;
+      margin: auto;
+    }
+    li {
+      background-color: white;
+      padding: 15px 20px;
+      margin: 10px 0;
+      border-radius: 10px;
+      font-size: 18px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    li.checked {
+      background-color: #d4edda;
+      text-decoration: line-through;
+      color: gray;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+  <h1>🛒 قائمة مشترياتي</h1>
+
+  <div id="inputContainer">
+    <input type="text" id="itemInput" placeholder="أدخل اسم الغرض...">
+    <button onclick="addItem()">إضافة</button>
+  </div>
+
+  <ul id="shoppingList"></ul>
+
+  <script>
+    function addItem() {
+      const input = document.getElementById('itemInput');
+      const text = input.value.trim();
+      if (text === "") return;
+
+      const li = document.createElement("li");
+      li.textContent = text;
+      li.onclick = function() {
+        li.classList.toggle('checked');
+      };
+
+      document.getElementById("shoppingList").appendChild(li);
+      input.value = "";
+    }
+  </script>
+</body>
+</html>
